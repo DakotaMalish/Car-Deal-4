@@ -17,7 +17,7 @@ public class Motorcycle extends Vehicle
     private String motoType;
 
     //construcor
-    public Motorcycle(String make, String model, Color color, String doors, String passengers, double purchasePrice)
+    public Motorcycle(String make, String model, String color, String doors, String passengers, double purchasePrice)
     {
 
               super(make, model, color, doors, passengers, purchasePrice);

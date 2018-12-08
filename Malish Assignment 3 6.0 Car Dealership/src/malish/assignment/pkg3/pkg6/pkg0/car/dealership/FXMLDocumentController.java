@@ -44,16 +44,21 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private ComboBox<String> carDoorsInput;
-    ObservableList<String> carListDoors = FXCollections.observableArrayList(
+    private final ObservableList<String> carListDoors = FXCollections.observableArrayList(
             "1", "2", "3", "4", "5", "6");
     @FXML
     private ComboBox<String> carCapacityInput;
-    ObservableList<String> carListCapacity = FXCollections.observableArrayList(
+    private final ObservableList<String> carListCapacity = FXCollections.observableArrayList(
             "1", "2", "3", "4", "5", "6", "7");
-
-    private Button updateInput;
+    
     @FXML
-    private ComboBox<?> carColorInput;
+    private ComboBox<String> carColorInput;
+    private final ObservableList<String> carListColor = FXCollections.observableArrayList(
+            "Red", "Blue", "Black", "Green", "Silver", "Gray", "Brown", "Dark Red");
+    
+    
+    @FXML
+    private Button updateInput;        
     @FXML
     public  ComboBox<Vehicle> carRemoveSelect;
     @FXML
@@ -132,6 +137,7 @@ public class FXMLDocumentController implements Initializable {
         carModelInput.setItems(carListModel);
         carDoorsInput.setItems(carListDoors);
         carCapacityInput.setItems(carListCapacity);
+        carColorInput.setItems(carListColor);
 
 	// set the list to the combo box, it will be kept updated automatically
         carRemoveSelect.setItems(vehicles);
@@ -163,7 +169,7 @@ public class FXMLDocumentController implements Initializable {
         String model = carModelInput.getSelectionModel().getSelectedItem();
         String doors = carDoorsInput.getSelectionModel().getSelectedItem();
         String passengers = carCapacityInput.getSelectionModel().getSelectedItem();
-        Color color = Color.RED;
+        String color = carColorInput.getSelectionModel().getSelectedItem();
         String text = carPricePurchasedInput.getText();
         double purchasePrice = text.isEmpty() ? 0.0 : Double.parseDouble(text);
        
@@ -176,6 +182,7 @@ public class FXMLDocumentController implements Initializable {
         carModelInput.getSelectionModel().selectFirst();
         carDoorsInput.getSelectionModel().selectFirst();
         carCapacityInput.getSelectionModel().selectFirst();
+        carColorInput.getSelectionModel().selectFirst();
         carPricePurchasedInput.setText("");
     }
 
@@ -193,6 +200,7 @@ public class FXMLDocumentController implements Initializable {
                 modelDisplay.setText(vehicle.getModel());
                 doorsDisplay.setText(vehicle.getDoors());
                 capacityDisplay.setText(vehicle.getPassengers());
+                colorDisplay.setText(vehicle.getColor());
                 pricePurchasedDisplay.setText(Double.toString(vehicle.getPurchasePrice()));
                 
                 // do the same for all the other attributes

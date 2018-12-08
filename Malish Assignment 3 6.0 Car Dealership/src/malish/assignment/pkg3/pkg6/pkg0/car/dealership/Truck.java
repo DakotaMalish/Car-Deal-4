@@ -22,7 +22,7 @@ public class Truck extends Vehicle
     
     
     //construcor
-    public Truck(String make, String model, Color color, String doors, String passengers, double purchasePrice)
+    public Truck(String make, String model, String color, String doors, String passengers, double purchasePrice)
     {
 
               super(make, model, color, doors, passengers, purchasePrice);

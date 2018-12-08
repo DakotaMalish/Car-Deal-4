@@ -14,23 +14,25 @@ public class Vehicle
 
     private String make;
     private String model;
-    private Color color;
-    private double purchasePrice;
     private String doors;
     private String passengers;
+    private String color;
+    private double purchasePrice;
     private double customOffer;
     private static int vehicleCount;
     //private boolean customerOffer = false;
   
 
     //construcor
-    public Vehicle(String make, String model, Color color, String doors, String passengers, double purchasePrice)
+    public Vehicle(String make, String model, String color, String doors, String passengers, double purchasePrice)
     
     {
      vehicleCount++;
      //refers to variables in class
      this.model = model;
      this.make = make;
+     this.doors = doors;
+     this.passengers = passengers;
      this.color = color;
      this.purchasePrice = purchasePrice;
     
@@ -43,16 +45,16 @@ public class Vehicle
     
     public String getModel(){return this.model;}
     public void setModel(String model){this.model = model;}
-    
-    public Color getColor(){return this.color;}
-    public void setColor(Color color){this.color = color;}
-    
         
     public String getDoors(){return this.doors;}
     public void setDoors(String doors){this.doors = doors;}    
     
     public String getPassengers(){return this.passengers;}
     public void setPassengers(String passengers){this.passengers = passengers;}
+    
+    public String getColor(){return this.color;}
+    public void setColor(String color){this.color = color;}
+    
     
     public double getPurchasePrice(){return this.purchasePrice;}
     public void setPurchasePrice(double purchasePrice){this.purchasePrice = purchasePrice;}
