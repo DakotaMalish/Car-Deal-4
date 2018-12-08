@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Malish Assignment 3 6.0 Car Dealership.jnlp">
+  <information>
+    <title>Malish Assignment 3 6.0 Car Dealership</title>
+    <vendor>RedPanda13</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Malish Assignment 3 6.0 Car Dealership" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="malish.assignment.pkg3.pkg6.pkg0.car.dealership.MalishAssignment360CarDealership"  name="Malish Assignment 3 6.0 Car Dealership" />
+  <update check="always"/>
+</jnlp>
