@@ -20,10 +20,10 @@ public class Car extends Vehicle
 
  
     //construcor
-    public Car(String make, String model, String color, String doors, String passengers, double purchasePrice)
+    public Car(String type, String make, String model, String color, String doors, String passengers, double purchasePrice)
     {
 
-              super(make, model, color, doors, passengers, purchasePrice);
+              super( type, make, model, color, doors, passengers, purchasePrice);
       //incraments count
       carCount++;
              
@@ -43,9 +43,9 @@ public class Car extends Vehicle
 //    public String getDoors(){return this.doors;}
 //    
 //    
-    private String type = "";
-    public String getType(){return this.type;}
-    public void setType(String s){this.type = s;}
+//    private String type = "";
+//    public String getType(){return this.type;}
+//    public void setType(String s){this.type = s;}
     
     
     

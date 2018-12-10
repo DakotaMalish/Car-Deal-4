@@ -14,18 +14,17 @@ public class Truck extends Vehicle
 
     private static int truckCount;
     private double truckWeight;
-    private double towingLength;
+    private double truckLength;
     private int truckPassengers;
-    
-    
+
     
     
     
     //construcor
-    public Truck(String make, String model, String color, String doors, String passengers, double purchasePrice)
+    public Truck(String type, String make, String model, String color, String doors, String passengers, double purchasePrice, double truckWeight, double truckLength)
     {
 
-              super(make, model, color, doors, passengers, purchasePrice);
+              super( type, make, model, color, doors, passengers, purchasePrice);
 
         truckCount++;
     }
@@ -33,15 +32,15 @@ public class Truck extends Vehicle
     public void setTruckWeight(double truckWeight){this.truckWeight = truckWeight;}
     public double getTruckWeight(){return this.truckWeight;}
     
-    public void setTowingLength(double towingLength){this.towingLength = towingLength;}
-    public double getTowingLength(){return this.towingLength;}
+    public void setTruckLength(double towingLength){this.truckLength = towingLength;}
+    public double getTruckLength(){return this.truckLength;}
     
     public void setTruckPassengers(int truckPassengers){this.truckPassengers = truckPassengers;}
     public int getTruckPassengers(){return this.truckPassengers;}
     
-    private String type = "";
-    public String getType(){return this.type;}
-    public void setType(String s){this.type = s;}
+//    private String type = "";
+//    public String getType(){return this.type;}
+//    public void setType(String s){this.type = s;}
     
 
     //Override for Commission (truck)

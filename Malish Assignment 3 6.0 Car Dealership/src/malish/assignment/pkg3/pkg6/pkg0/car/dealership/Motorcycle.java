@@ -17,10 +17,10 @@ public class Motorcycle extends Vehicle
     private String motoType;
 
     //construcor
-    public Motorcycle(String make, String model, String color, String doors, String passengers, double purchasePrice)
+    public Motorcycle(String type, String make, String model, String color, String doors, String passengers, double purchasePrice)
     {
 
-              super(make, model, color, doors, passengers, purchasePrice);
+              super( type, make, model, color, doors, passengers, purchasePrice);
               
               motoCount++;
 
@@ -31,10 +31,12 @@ public class Motorcycle extends Vehicle
     
     private void setMotoType(String motoType){this.motoType = motoType;}
     private String getMotoType(){return this.motoType;} 
-    private String type = "";
-    public String getType(){return this.type;}
-    public void setType(String s){this.type = s;}
     
+    
+//    private String type = "";
+//    public String getType(){return this.type;}
+//    public void setType(String s){this.type = s;}
+//    
 
     
     //Override for Commission (Motorcycle)

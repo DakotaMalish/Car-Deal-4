@@ -19,15 +19,17 @@ public class Vehicle
     private String color;
     private double purchasePrice;
     private double customOffer;
-    private static int vehicleCount;
+    private int vehicleCount;
+    private String type = "";
     //private boolean customerOffer = false;
-  
 
+    
+    
     //construcor
-    public Vehicle(String make, String model, String color, String doors, String passengers, double purchasePrice)
+    public Vehicle(String type, String make, String model, String color, String doors, String passengers, double purchasePrice)
     
     {
-     vehicleCount++;
+     this.vehicleCount++;
      //refers to variables in class
      this.model = model;
      this.make = make;
@@ -57,8 +59,12 @@ public class Vehicle
     
     
     public double getPurchasePrice(){return this.purchasePrice;}
-    public void setPurchasePrice(double purchasePrice){this.purchasePrice = purchasePrice;}
-
+    public void setPurchasePrice(double purchasePrice){this.purchasePrice = purchasePrice;}    
+    
+    public Integer getvehicleCount(){return this.vehicleCount;}
+    
+    public String getType(){return this.type;}
+    public void setType(String s){this.type = s;}
     
         
     //checks the deal agains the cars for sell
