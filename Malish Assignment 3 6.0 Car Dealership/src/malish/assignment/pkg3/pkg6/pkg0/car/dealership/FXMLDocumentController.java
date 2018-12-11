@@ -443,8 +443,10 @@ public class FXMLDocumentController implements Initializable {
                 TruckBedDisplay.setText(" ");
             }
             // if nothing is selected
-        } else {
-            System.out.println("Nothing selected");
+        } else {                    
+                    JOptionPane.showMessageDialog(null,
+                            " Nothing Selected!");
+            
         }
     }
 
@@ -460,7 +462,7 @@ public class FXMLDocumentController implements Initializable {
                     count--;
                     inventoryCount.setText(Integer.toString(count));
                 } else {
-                    // put joption here
+
         
                 }
    
@@ -476,7 +478,7 @@ public class FXMLDocumentController implements Initializable {
             // check if the vehicle is a car
             if (vehicle instanceof Car) {
 
-                if(Double.parseDouble(comPriceInput.getText()) > vehicle.getPurchasePrice()){
+                if(Double.parseDouble(comPriceInput.getText()) >= vehicle.getPurchasePrice()){
                     
                    tempComPrice = Double.parseDouble(comPriceInput.getText()) * 0.05;
                    
@@ -500,7 +502,7 @@ public class FXMLDocumentController implements Initializable {
                 Truck tempTruck = (Truck) vehicles.get(vehicleSelectCombo.getSelectionModel().getSelectedIndex());
 
                 
-                if(Double.parseDouble(comPriceInput.getText()) > tempTruck.getPurchasePrice()){
+                if(Double.parseDouble(comPriceInput.getText()) >= tempTruck.getPurchasePrice()){
                    
                     tempComPrice = Double.parseDouble(comPriceInput.getText()) * 0.15;
                     commissionDisplay.setText(Double.toString(tempComPrice));
@@ -523,7 +525,7 @@ public class FXMLDocumentController implements Initializable {
             else if(vehicle instanceof Motorcycle){
                 Motorcycle tempMotorcycle = (Motorcycle) vehicles.get(vehicleSelectCombo.getSelectionModel().getSelectedIndex());
                 
-                if(Double.parseDouble(comPriceInput.getText()) > tempMotorcycle.getPurchasePrice()){
+                if(Double.parseDouble(comPriceInput.getText()) >= tempMotorcycle.getPurchasePrice()){
                    
                     tempComPrice = Double.parseDouble(comPriceInput.getText()) * 0.20;
                     commissionDisplay.setText(Double.toString(tempComPrice));
