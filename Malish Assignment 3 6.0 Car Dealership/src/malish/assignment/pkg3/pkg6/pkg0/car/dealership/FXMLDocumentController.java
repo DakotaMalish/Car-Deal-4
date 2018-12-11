@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Callback;
 import javax.swing.JOptionPane;
 
@@ -33,8 +34,11 @@ public class FXMLDocumentController implements Initializable {
     // use of ObservableList for easy showing in FXML
     private final ObservableList<Vehicle> vehicles = FXCollections.observableArrayList();
     
-    private final ObservableList<Truck> trucks = FXCollections.observableArrayList();
+   // private final ObservableList<Truck> trucks = FXCollections.observableArrayList();
 
+    public double tempComPrice = 0;
+    
+    
 //CAR BLOCK***************************************************************************************************************************    
     @FXML
     private ComboBox<String> carMakeInput;
@@ -86,19 +90,46 @@ public class FXMLDocumentController implements Initializable {
     private final ObservableList<String> truckListColor = FXCollections.observableArrayList(
             "Red", "Blue", "Black", "Green", "Silver", "Gray", "Brown", "Dark Red");
 //**************************************************************************************************************************************
-
+//Motorcycle Block**********************************************************************************************************************
     @FXML
+    private ComboBox<String> motoCapacityInput;
+    private final ObservableList<String> motoListCapacity = FXCollections.observableArrayList(
+            "1", "2");
+    
+    
+    @FXML
+    private ComboBox<String> motoModelInput;
+    private final ObservableList<String> motoListModel = FXCollections.observableArrayList(
+            "Touring Bike", "Chopper", "Cruiser", "Power Cruiser", "Dirt Bike", "Enduro Bike", "Motocross Bike", "Scooter", "Sport Bike");
+    
+    
+    @FXML
+    private ComboBox<String> motoMakeInput;
+    private final ObservableList<String> motoListMake = FXCollections.observableArrayList(
+            "Dodge", "Ford", "Honda", "Toyota", "Yamaha");
+    
+    
+    @FXML
+    private ComboBox<String> motoTypeInput;
+    private final ObservableList<String> motoListType = FXCollections.observableArrayList(
+            "Single", "Parallel-Twin", "Inline-Three", "Inline-Four", "V-Twin (trans)", "V-Twin (long)", "Flat-Twin (boxer)", "L-Twin");
+    
+    
+    @FXML
+    private ComboBox<String> motoColorInput;
+    private final ObservableList<String> motoListColor = FXCollections.observableArrayList(
+            "Red", "Blue", "Black", "Green", "Silver", "Gray", "Brown", "Dark Red");
+    
+//**************************************************************************************************************************************   
+    
+    
+    
+        @FXML
     private TextField truckPricePurchasedInput;
     @FXML
     private Button truckUpdateInput;
-    
-    
-    
     @FXML
     public  ComboBox<Vehicle> vehicleSelectCombo;
-    @FXML
-    private Button viewSelectedCar;
-
     @FXML
     private TextField carPricePurchasedInput;
     @FXML
@@ -118,23 +149,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label modelDisplay;
     @FXML
-    private ComboBox<?> motoColorInput;
-    @FXML
     private Button motoUpdateInput;
     @FXML
     private TextField motoPricePurchasedInput;
-    @FXML
-    private ComboBox<?> motoModelInput;
-    @FXML
-    private ComboBox<?> motoMakeInput;
-    @FXML
-    private Label colorDisplay1;
-    @FXML
-    private ComboBox<?> motoDoorsInput;
-    @FXML
-    private ComboBox<?> motoCapacityInput;
-    @FXML
-    private TextField askingPriceInput;
     @FXML
     private Button vehicleRemoveBTN;
     @FXML
@@ -147,6 +164,18 @@ public class FXMLDocumentController implements Initializable {
     private TextField truckBedLength;
     @FXML
     private Label TruckBedDisplay;
+    @FXML
+    private TextField motoWeightInput;
+    @FXML
+    private Label motoWeightDisplay;
+    @FXML
+    private Label motoTypeDisplay;
+    @FXML
+    private Rectangle sellVehicleBTN;
+    @FXML
+    private TextField comPriceInput;
+    @FXML
+    private Button vehiclesSellBTN;
 
     
     
@@ -173,7 +202,13 @@ public class FXMLDocumentController implements Initializable {
         truckUpdateInput.setDisable(true);
         
         //Motorcycle
-        
+        motoMakeInput.setItems(motoListMake);
+        motoModelInput.setItems(motoListModel);
+        motoTypeInput.setItems(motoListType);
+        motoCapacityInput.setItems(motoListCapacity);
+        motoColorInput.setItems(motoListColor);
+        motoUpdateInput.setDisable(true);
+         
         
  //CAR BLOCK***************************************************************************************************************************         
 	// set the list to the combo box, it will be kept updated automatically
@@ -189,7 +224,7 @@ public class FXMLDocumentController implements Initializable {
                     setGraphic(null);
                 } else {
                     // modify this line to see the combo box entries as wanted
-                    setText(vehicle.getMake() + " " + vehicle.getModel());
+                    setText(vehicle.getType() + " " + vehicle.getModel() + " " + vehicle.getMake());
                 }
             }
         };
@@ -239,53 +274,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void enableCarSubmit (ActionEvent event){carUpdateInput.setDisable(false);}
 
-    @FXML
-    public void enableMotorcycleSumbit (ActionEvent event){motoUpdateInput.setDisable(false);}
-    
-
-    
-    public void vehicleRemoveBTN(java.awt.event.ActionEvent evt){
-    
-    }
-    
+   
     
 //**********************************************************************************************************************************
 
 
 //TRUCK BLOCK***********************************************************************************************************************
-  
-//    public void initializeTruck(URL url, ResourceBundle rb) {
-////        truckMakeInput.setItems(truckListMake);
-////        truckModelInput.setItems(truckListModel);
-////        truckDoorsInput.setItems(truckListDoors);
-////        truckCapacityInput.setItems(truckListCapacity);
-////        truckColorInput.setItems(truckListColor);
-////        truckUpdateInput.setDisable(true);
-//        
-//        
-//	// set the list to the combo box, it will be kept updated automatically
-//        vehicleSelectCombo.setItems(vehicles);
-//
-//        // adjust the appearance of the combo box
-//        Callback<ListView<Truck>, ListCell<Truck>> cellfactory = (ListView<Truck> param) -> new ListCell<Truck>() {
-//            @Override
-//            protected void updateItem(Truck trucks, boolean empty) {
-//                super.updateItem(trucks, empty);
-//
-//                if (trucks == null || empty) {
-//                    setGraphic(null);
-//                } else {
-//                    // modify this line to see the combo box entries as wanted
-//                    setText(trucks.getMake() + " " + trucks.getModel());
-//                }
-//            }
-//        };
-//
-//        // call the cellfactory settings just modified on the combo box
-//        vehicleSelectCombo.setButtonCell(cellfactory.call(null));
-//        vehicleSelectCombo.setCellFactory(cellfactory);
-//    }
-
     @FXML
     public void truckUpdate(ActionEvent event) {
         // read all attributes from the input components
@@ -295,20 +289,22 @@ public class FXMLDocumentController implements Initializable {
         String passengers = truckCapacityInput.getSelectionModel().getSelectedItem();
         String color = truckColorInput.getSelectionModel().getSelectedItem();
         String type = "Truck";
-    
     try{    
 
         String text = truckPricePurchasedInput.getText();
         double purchasePrice = text.isEmpty() ? 0.0 : Double.parseDouble(text);
-        text = truckTowingCapacity.getText();
-        double truckWeight = text.isEmpty() ? 0.0 : Double.parseDouble(text);
+        
+        String box = truckTowingCapacity.getText();
+        double truckWeight = box.isEmpty() ? 0.0 : Double.parseDouble(box);
+        
         text = truckBedLength.getText();
         double truckLength = text.isEmpty() ? 0.0 : Double.parseDouble(text);
         
 
+        
+
         // create new truck and add it to the list 
         vehicles.add(new Truck(type, maker, model, color, doors, passengers, purchasePrice, truckWeight, truckLength));
-        //vehicles.add(new Car(type, maker, model, color, doors, passengers, purchasePrice));
         //increases inventory by 1
         count++;
         inventoryCount.setText(Integer.toString(count));
@@ -318,6 +314,8 @@ public class FXMLDocumentController implements Initializable {
         JOptionPane.showMessageDialog(null,
                             " Pealse only enter A Numeric Price.");
         carPricePurchasedInput.setText("");
+        truckTowingCapacity.setText("");
+        truckBedLength.setText("");
             }    
     
         // reset the input components
@@ -332,14 +330,68 @@ public class FXMLDocumentController implements Initializable {
         truckUpdateInput.setDisable(true);
     }
     // enables button
-    @FXML
+        @FXML
     public void enableTruckSubmit (ActionEvent event){truckUpdateInput.setDisable(false);}
 
    
    
     
 //**********************************************************************************************************************************
+
+//Motorcycle Block******************************************************************************************************************
+
+    @FXML
+    public void motoUpdate(ActionEvent event) {
+        // read all attributes from the input components
+        String maker = motoMakeInput.getSelectionModel().getSelectedItem();
+        String model = motoModelInput.getSelectionModel().getSelectedItem();
+        String motoType = motoTypeInput.getSelectionModel().getSelectedItem();
+        String passengers = motoCapacityInput.getSelectionModel().getSelectedItem();
+        String color = motoColorInput.getSelectionModel().getSelectedItem();
+        String type = "Motorcycle";
+        String doors = null;
+    try{    
+
+        String text = motoPricePurchasedInput.getText();
+        double purchasePrice = text.isEmpty() ? 0.0 : Double.parseDouble(text);
+        
+        String box = motoWeightInput.getText();
+        double motoWeight = box.isEmpty() ? 0.0 : Double.parseDouble(box);
+
+        
+        // create new truck and add it to the list 
+        vehicles.add(new Motorcycle(type, maker, model, color, doors, passengers, purchasePrice, motoWeight, motoType));
+        //increases inventory by 1
+        count++;
+        inventoryCount.setText(Integer.toString(count));
+
+        
+    }catch(NumberFormatException e){
+        JOptionPane.showMessageDialog(null,
+                            " Pealse only enter A Numeric Price.");
+        carPricePurchasedInput.setText("");
+
+            }    
     
+        // reset the input components
+        motoMakeInput.getSelectionModel().selectFirst();
+        motoModelInput.getSelectionModel().selectFirst();
+        motoTypeInput.getSelectionModel().selectFirst();
+        motoCapacityInput.getSelectionModel().selectFirst();
+        motoColorInput.getSelectionModel().selectFirst();
+        motoPricePurchasedInput.setText("");
+        motoWeightInput.setText("");
+        motoUpdateInput.setDisable(true);
+        
+    }
+    // enables button
+    
+    @FXML
+    public void enableMotorcycleSumbit (ActionEvent event){motoUpdateInput.setDisable(false);}
+   
+
+//**********************************************************************************************************************************
+
     @FXML
     public void retrieveVehicle(ActionEvent event) {
         // check if anything is selected
@@ -356,19 +408,39 @@ public class FXMLDocumentController implements Initializable {
                 capacityDisplay.setText(vehicle.getPassengers());
                 colorDisplay.setText(vehicle.getColor());
                 pricePurchasedDisplay.setText(Double.toString(vehicle.getPurchasePrice()));
-               // vehicleCount.setTextsetText(Integer.toString(vehicleCount));
+                truckTowingCapacityDisplay.setText(" ");
+                TruckBedDisplay.setText(" ");
+                motoWeightDisplay.setText(" ");
+                motoTypeDisplay.setText(" ");
                // do the same for all the other attributes
             }
             else if(vehicle instanceof Truck){
-                Truck tempTruck = trucks.get(vehicleSelectCombo.getSelectionModel().getSelectedIndex());
-                makeDisplay.setText(vehicle.getMake());
-                modelDisplay.setText(vehicle.getModel());
-                doorsDisplay.setText(vehicle.getDoors());
-                capacityDisplay.setText(vehicle.getPassengers());
-                colorDisplay.setText(vehicle.getColor());
-                pricePurchasedDisplay.setText(Double.toString(vehicle.getPurchasePrice()));
+                Truck tempTruck = (Truck) vehicles.get(vehicleSelectCombo.getSelectionModel().getSelectedIndex());
+                
+                makeDisplay.setText(tempTruck.getMake());
+                modelDisplay.setText(tempTruck.getModel());
+                doorsDisplay.setText(tempTruck.getDoors());
+                capacityDisplay.setText(tempTruck.getPassengers());
+                colorDisplay.setText(tempTruck.getColor());
+                pricePurchasedDisplay.setText(Double.toString(tempTruck.getPurchasePrice()));
                 truckTowingCapacityDisplay.setText(Double.toString(tempTruck.getTruckWeight()));
                 TruckBedDisplay.setText(Double.toString(tempTruck.getTruckLength()));
+                motoWeightDisplay.setText(" ");
+                motoTypeDisplay.setText(" ");
+            }
+            else if(vehicle instanceof Motorcycle){
+                Motorcycle tempMotorcycle = (Motorcycle) vehicles.get(vehicleSelectCombo.getSelectionModel().getSelectedIndex());
+                
+                makeDisplay.setText(tempMotorcycle.getMake());
+                modelDisplay.setText(tempMotorcycle.getModel());
+                doorsDisplay.setText(tempMotorcycle.getDoors());
+                capacityDisplay.setText(tempMotorcycle.getPassengers());
+                colorDisplay.setText(tempMotorcycle.getColor());
+                pricePurchasedDisplay.setText(Double.toString(tempMotorcycle.getPurchasePrice()));
+                motoWeightDisplay.setText(Double.toString(tempMotorcycle.getMotoWeight()));
+                motoTypeDisplay.setText(tempMotorcycle.getMotoType());
+                truckTowingCapacityDisplay.setText(" ");
+                TruckBedDisplay.setText(" ");
             }
             // if nothing is selected
         } else {
@@ -383,15 +455,107 @@ public class FXMLDocumentController implements Initializable {
                      
 
                if (vehicleSelectCombo.getSelectionModel().getSelectedIndex() != -1) {                       
-                    vehicleSelectCombo.getItems().remove(0);
+                    
+                   vehicleSelectCombo.getItems().remove(vehicleSelectCombo.getSelectionModel().getSelectedIndex());
                     count--;
                     inventoryCount.setText(Integer.toString(count));
                 } else {
                     // put joption here
         
                 }
-                
+   
             }
+               
+                  
+        @FXML
+    private void vehiclesSellBTN(ActionEvent event){           
+    if (vehicleSelectCombo.getSelectionModel().getSelectedIndex() != -1) {
+            // get the vehicle selected by the id from the combo box
+            Vehicle vehicle = vehicles.get(vehicleSelectCombo.getSelectionModel().getSelectedIndex());
+        try{
+            // check if the vehicle is a car
+            if (vehicle instanceof Car) {
+
+                if(Double.parseDouble(comPriceInput.getText()) > vehicle.getPurchasePrice()){
+                    
+                   tempComPrice = Double.parseDouble(comPriceInput.getText()) * 0.05;
+                   
+                   commissionDisplay.setText(Double.toString(tempComPrice));
+                    if (vehicleSelectCombo.getSelectionModel().getSelectedIndex() != -1) {                       
+                    
+                   vehicleSelectCombo.getItems().remove(vehicleSelectCombo.getSelectionModel().getSelectedIndex());
+                    count--;
+                    inventoryCount.setText(Integer.toString(count));
+                    } else {
+                    // put joption here
+        
+                }
+                }else{
+                    JOptionPane.showMessageDialog(null,
+                            " The asking price is to low");
+  
+                }
+            }
+            else if(vehicle instanceof Truck){
+                Truck tempTruck = (Truck) vehicles.get(vehicleSelectCombo.getSelectionModel().getSelectedIndex());
+
+                
+                if(Double.parseDouble(comPriceInput.getText()) > tempTruck.getPurchasePrice()){
+                   
+                    tempComPrice = Double.parseDouble(comPriceInput.getText()) * 0.15;
+                    commissionDisplay.setText(Double.toString(tempComPrice));
+                    
+                    if (vehicleSelectCombo.getSelectionModel().getSelectedIndex() != -1) {                       
+                    
+                    vehicleSelectCombo.getItems().remove(vehicleSelectCombo.getSelectionModel().getSelectedIndex());
+                    count--;
+                    inventoryCount.setText(Integer.toString(count));
+                } else {
+                    // put joption here
+        
+                }
+                }else{
+                    JOptionPane.showMessageDialog(null,
+                            " The asking price is to low");
+  
+                }
+            }
+            else if(vehicle instanceof Motorcycle){
+                Motorcycle tempMotorcycle = (Motorcycle) vehicles.get(vehicleSelectCombo.getSelectionModel().getSelectedIndex());
+                
+                if(Double.parseDouble(comPriceInput.getText()) > tempMotorcycle.getPurchasePrice()){
+                   
+                    tempComPrice = Double.parseDouble(comPriceInput.getText()) * 0.20;
+                    commissionDisplay.setText(Double.toString(tempComPrice));
+                    if (vehicleSelectCombo.getSelectionModel().getSelectedIndex() != -1) {                       
+                    
+                    vehicleSelectCombo.getItems().remove(vehicleSelectCombo.getSelectionModel().getSelectedIndex());
+                    count--;
+                    inventoryCount.setText(Integer.toString(count));
+                    
+                } else {
+                    // put joption here
+        
+                }
+       
+                }else{
+                    JOptionPane.showMessageDialog(null,
+                            " The asking price is to low");
+  
+                }
             
+            }
+                }catch(NumberFormatException e){
+        JOptionPane.showMessageDialog(null,
+                            " Pealse only enter A Numeric Price.");
+        
+        comPriceInput.setText("");
+
+            }
+            // if nothing is selected
+        } else {
+            System.out.println("Nothing selected");
+        }      
+        }         
         }
         

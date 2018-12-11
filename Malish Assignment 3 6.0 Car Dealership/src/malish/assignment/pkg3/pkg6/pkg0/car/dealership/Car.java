@@ -12,7 +12,7 @@ import java.awt.Color;
 public class Car extends Vehicle
 {
 
-    private static int carCount;
+      //private double carAskingPrice = 0;
 //    private String passengers;
 //    private String doors;
     //private String carType;
@@ -24,10 +24,41 @@ public class Car extends Vehicle
     {
 
               super( type, make, model, color, doors, passengers, purchasePrice);
-      //incraments count
-      carCount++;
-             
+      
+              
+    //this.carAskingPrice = carAskingPrice;          
+              
+       
     }
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
+
+} 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //turns out all of this was in vehicle so i didnt need it 
+    
+    
     
     //Override for Commission (car)
     
@@ -61,5 +92,3 @@ public class Car extends Vehicle
 
 
 
-
-}

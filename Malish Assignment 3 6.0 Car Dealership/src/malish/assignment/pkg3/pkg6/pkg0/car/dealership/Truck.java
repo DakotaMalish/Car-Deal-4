@@ -12,7 +12,7 @@ import java.awt.Color;
 public class Truck extends Vehicle
 {
 
-    private static int truckCount;
+    //private static int truckAskingPrice;
     private double truckWeight;
     private double truckLength;
     private int truckPassengers;
@@ -25,8 +25,11 @@ public class Truck extends Vehicle
     {
 
               super( type, make, model, color, doors, passengers, purchasePrice);
+              
+    this.truckLength = truckLength;
+    this.truckWeight = truckWeight;
 
-        truckCount++;
+        
     }
 
     public void setTruckWeight(double truckWeight){this.truckWeight = truckWeight;}

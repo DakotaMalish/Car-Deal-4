@@ -37,7 +37,7 @@ public class Vehicle
      this.passengers = passengers;
      this.color = color;
      this.purchasePrice = purchasePrice;
-    
+     this.type = type;
      
      
     }
